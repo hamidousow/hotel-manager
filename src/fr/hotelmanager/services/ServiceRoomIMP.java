@@ -7,9 +7,10 @@ import fr.hotelmanager.daos.RoomDAO;
 import fr.hotelmanager.entities.Room;
 
 public class ServiceRoomIMP implements ServiceDAO<Room> {
-	
-	Random ran = new Random();
 
+	//TODO: replace list by database table rooms
+	Random ran = new Random();
+	RoomDAO roomDAO;
 
 	@Override
 	public Room save(Room newRoom) {
@@ -30,8 +31,9 @@ public class ServiceRoomIMP implements ServiceDAO<Room> {
 	}
 	
 	@Override
-	public List<Room> findAll() {				
-		return RoomDAO.rooms;
+	public List<Room> findAll() {
+		List<Room> rooms = roomDAO.findAll();
+		return rooms;
 	}
 	
 	@Override

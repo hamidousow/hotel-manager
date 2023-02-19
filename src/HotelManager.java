@@ -9,13 +9,10 @@ import fr.hotelmanager.views.AppView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
 public class HotelManager {
 
-    public final Scanner sc = new Scanner(System.in);
     public static RoomController roomController = new RoomController();
-    public ServiceDAO<Room> serviceRoom = new ServiceRoomIMP();
 
     public static List<Client> clients = new ArrayList<>();
     static Random ran = new Random();
@@ -23,7 +20,7 @@ public class HotelManager {
 
     public static void main(String[] args) {
 
-        RoomDAO.rooms = generateRooms(15);
+        //RoomDAO.rooms = generateRooms(15);
         clients = generateClients(15);
 
         while(true) {

@@ -5,6 +5,7 @@ public class Room {
 	private int id;
 	public static int cpt = 0;
 	private boolean isFree;
+	private String name;
 	private int nbrLits;
 	private int nbrPlaces;
 	
@@ -15,7 +16,15 @@ public class Room {
 	public Room(int id) {
 		this.id = id;
 	}
-	
+
+	public Room(int id, String name, boolean isFree, int nbrLits, int nbrPlaces) {
+		this.id = id;
+		this.name = name;
+		this.isFree = isFree;
+		this.nbrLits = nbrLits;
+		this.nbrPlaces = nbrPlaces;
+	}
+
 	public Room(boolean isFree, int nbrLits, int nbrPlaces) {
 		this.id = ++cpt;
 		this.isFree = isFree;

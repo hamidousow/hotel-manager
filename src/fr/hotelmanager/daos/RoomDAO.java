@@ -1,5 +1,9 @@
 package fr.hotelmanager.daos;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -7,15 +11,17 @@ import java.util.Random;
 import fr.hotelmanager.entities.Room;
 import fr.hotelmanager.services.ServiceDAO;
 import fr.hotelmanager.services.ServiceRoomIMP;
+import fr.hotelmanager.utils.DatabaseConnection;
 
 
 public class RoomDAO {	
 	
 	private ServiceDAO<Room> serviceRoom = new ServiceRoomIMP();
 	public static List<Room> rooms = new ArrayList();
+	Connection connection;
 	
 	public RoomDAO() {
-		
+		this.connection = DatabaseConnection.getInstance().getCOnnection();
 	}		
 	
 	public List<Room> findAllRoomsByState(boolean isFree) {
@@ -48,6 +54,13 @@ public class RoomDAO {
 		list.get(indexRoom).setIsFree(false);
 		return true;		
 	}
+
+	public void reserver(int id) {
+		List<Room>list = findAllRoomsByState(true);
+		int indexRoom = serviceRoom.find(id);
+		list.get(indexRoom).setIsFree(false);
+
+	}
 	
 	public boolean liberer(Room room) {
 		if(room.isFree()) {
@@ -55,5 +68,43 @@ public class RoomDAO {
 		}		
 		room.setIsFree(true);		
 		return true;
+	}
+
+	public void closeConnection() {
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public List<Room> findAll() {
+
+		List<Room> rooms = new ArrayList<>();
+		String url = "jdbc:postgresql://localhost:5432/postgres";
+		Statement st = null;
+
+		try {
+			String query = "SELECT * from rooms;";
+			st = connection.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			while(rs.next()) {
+				Room room = new Room(
+						rs.getInt(1),
+						rs.getString(2),
+						rs.getBoolean(3),
+						rs.getInt(4),
+						rs.getInt(5)
+				);
+				rooms.add(room);
+				System.out.println(room.toString());
+				System.out.println();
+			}
+			closeConnection();
+			return rooms;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
 	}
 }
