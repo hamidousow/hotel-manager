@@ -1,9 +1,6 @@
 import fr.hotelmanager.controllers.RoomController;
-import fr.hotelmanager.daos.RoomDAO;
 import fr.hotelmanager.entities.Client;
 import fr.hotelmanager.entities.Room;
-import fr.hotelmanager.services.ServiceDAO;
-import fr.hotelmanager.services.ServiceRoomIMP;
 import fr.hotelmanager.views.AppView;
 
 import java.util.ArrayList;
@@ -20,14 +17,10 @@ public class HotelManager {
 
     public static void main(String[] args) {
 
-        //RoomDAO.rooms = generateRooms(15);
-        clients = generateClients(15);
-
         while(true) {
             String choice = AppView.menuPrincipal();
 
             if(choice.equalsIgnoreCase("A")) {
-                System.out.println("\n\t*** Etat de l'hotel ***");
                 roomController.afficherEtat();
             }
 
@@ -36,12 +29,12 @@ public class HotelManager {
             }
 
             if((choice.equalsIgnoreCase("B"))) {
-                System.out.println("\n\t Afficher les chambres occupees");
+                System.out.println("\n\t Chambres occupees");
                 roomController.getAllRoomsByState(false);
             }
 
             if((choice.equalsIgnoreCase("C"))) {
-                System.out.println("\n\t Afficher les chambres libres");
+                System.out.println("\n\t Chambres libres");
                 roomController.getAllRoomsByState(true);
             }
 
@@ -75,20 +68,5 @@ public class HotelManager {
             AppView.scanner.nextLine();
         }
 
-    }
-
-    public static List<Client> generateClients(int n) {
-        for(int i = 0; i < n; i++) {
-            clients.add(new Client("Nom"+i, "Prenom"+i, "21/01/2023" , "adresse"+i+"@mail.com" ));
-        }
-        return clients;
-    }
-
-    public static List<Room> generateRooms(int n) {
-        List<Room> rooms = new ArrayList<>();
-        for(int i = 0; i < n; i++) {
-            rooms.add(new Room(ran.nextBoolean(), 1, 2));
-        }
-        return rooms;
     }
 }

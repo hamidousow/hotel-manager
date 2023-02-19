@@ -6,7 +6,7 @@ import java.util.Random;
 import fr.hotelmanager.daos.RoomDAO;
 import fr.hotelmanager.entities.Room;
 
-public class ServiceRoomIMP implements ServiceDAO<Room> {
+public class ServiceRoomIMP implements ServiceRoomDAO<Room> {
 
 	//TODO: replace list by database table rooms
 	RoomDAO roomDAO = new RoomDAO();
@@ -33,6 +33,11 @@ public class ServiceRoomIMP implements ServiceDAO<Room> {
 	public List<Room> findAll() {
 		return roomDAO.findAll();
 	}
+
+	@Override
+	public List<Room> findAllByState(boolean b) {
+		return roomDAO.findAllRoomsByState(b);
+	}
 	
 	@Override
 	public boolean update(int id) {
@@ -45,5 +50,4 @@ public class ServiceRoomIMP implements ServiceDAO<Room> {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
 }

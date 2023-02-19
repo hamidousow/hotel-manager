@@ -45,6 +45,10 @@ public class Room {
 		this.id = id;
 	}
 
+	public String getName() {
+		return this.name;
+	}
+
 	public boolean isFree() {
 		return isFree;
 	}
@@ -71,7 +75,9 @@ public class Room {
 	}	
 	
 	public String toString() {
-		return "Id : " + this.id + "\n Disponibilite : " + isFree() + "\n Nombre de places : " + getNbrPlaces() +"\n Nombre de lits : " + getNbrLits();
+		return "Id : " + this.id + "\n" +
+				"Nombre de places : " + getNbrPlaces() +"\n"+
+				"Nombre de lits : " + getNbrLits() + "\n" +
+				"Disponibilite : " + isFree() + "\n";
 	}
-
 }

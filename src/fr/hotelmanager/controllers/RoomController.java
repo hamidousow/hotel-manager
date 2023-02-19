@@ -1,18 +1,17 @@
 package fr.hotelmanager.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import fr.hotelmanager.daos.RoomDAO;
 import fr.hotelmanager.entities.Room;
-import fr.hotelmanager.services.ServiceDAO;
+import fr.hotelmanager.services.ServiceRoomDAO;
 import fr.hotelmanager.services.ServiceRoomIMP;
 import fr.hotelmanager.views.RoomView;
 
 public class RoomController {	
 	
 	private RoomDAO roomDAO = new RoomDAO();
-	private ServiceDAO<Room> serviceRoom = new ServiceRoomIMP();
+	private ServiceRoomDAO<Room> serviceRoom = new ServiceRoomIMP();
 	private RoomView roomView = new RoomView();
 	
 	public RoomController() {
@@ -31,14 +30,9 @@ public class RoomController {
 	}	
 	
 	public void getAllRoomsByState(boolean isFree) {
-		List<Room>listRooms = serviceRoom.findAll();
-		for(Room room : listRooms) {
-			if(room.isFree()==isFree) {
-				listRooms.add(room);
-			}
-		}
+		List<Room>listRooms = serviceRoom.findAllByState(isFree);
 		roomView.displayAllRoomState(listRooms);
-	}	
+	}
 	
 	/*public void reserverRoom() {
 		String [] auth = roomView.identification().trim().split(";");		

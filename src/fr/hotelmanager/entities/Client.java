@@ -4,20 +4,17 @@ public class Client {
 	
 	private int id;
 	private static int cpt = 0;
-	private String nom;
-	private String prenom;
-	private String dateNaissance;
+	private String firstname;
+	private String lastname;
 	private String mail;
 	
 	public Client() {
 		
 	}
 	
-	public Client(String nom, String prenom, String dateNaissance, String mail) {
-		this.id = ++cpt;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.dateNaissance = dateNaissance;
+	public Client(String firstname, String lastname, String mail) {
+		this.firstname = firstname;
+		this.lastname = lastname;
 		this.mail = mail;
 	}
 	
@@ -27,28 +24,23 @@ public class Client {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	public String getNom() {
-		return nom;
+
+	public String getFirstname() {
+		return firstname;
 	}
-	public void setNom(String nom) {
-		this.nom = nom;
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
-	
-	public String getPrenom() {
-		return prenom;
+
+	public String getLastname() {
+		return lastname;
 	}
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
-	
-	public String getDateNaissance() {
-		return dateNaissance;
-	}
-	public void setDateNaissance(String dateNaissance) {
-		this.dateNaissance = dateNaissance;
-	}
-	
+
 	public String getMail() {
 		return mail;
 	}
@@ -58,7 +50,8 @@ public class Client {
 	
 	@Override
 	public String toString() {
-		return "Client [id = " + id + ", nom = " + nom + ", prenom = " + prenom + ", date de naissance = " + dateNaissance
-				+ ", mail = " + mail + "]";
+		return "id = " + id + "\n" +
+				", nom = " + this.firstname + ", prenom = " + this.lastname + "\n" +
+				", mail = " + mail;
 	}
 }
