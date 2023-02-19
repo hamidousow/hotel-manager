@@ -31,8 +31,8 @@ public class RoomController {
 	}	
 	
 	public void getAllRoomsByState(boolean isFree) {
-		List<Room>listRooms = new ArrayList<>();
-		for(Room room : RoomDAO.rooms) {
+		List<Room>listRooms = serviceRoom.findAll();
+		for(Room room : listRooms) {
 			if(room.isFree()==isFree) {
 				listRooms.add(room);
 			}
@@ -40,7 +40,7 @@ public class RoomController {
 		roomView.displayAllRoomState(listRooms);
 	}	
 	
-	public void reserverRoom() {		
+	/*public void reserverRoom() {
 		String [] auth = roomView.identification().trim().split(";");		
 		boolean isAuth = roomDAO.authentification(auth);		
 		roomView.resultIdentication(isAuth);
@@ -49,10 +49,10 @@ public class RoomController {
 		}
 		int id = roomView.reserver();
 		int index = serviceRoom.find(id);
-		Room room = RoomDAO.rooms.get(index);
+		//Room room = RoomDAO.rooms.get(index);
 		boolean isReserved = roomDAO.reserverRoom(id);
-		roomView.confirmeReservation(room, isReserved);
-	}
+		//roomView.confirmeReservation(room, isReserved);
+	}*/
 	
 	public void libererChambre() {
 		String [] auth = roomView.identification().trim().split(";");		
@@ -63,10 +63,10 @@ public class RoomController {
 		}
 		int id = roomView.promptId();		
 		int index = serviceRoom.find(id);
-		Room room = RoomDAO.rooms.get(index);
+		//Room room = RoomDAO.rooms.get(index);
 		
-		boolean isOk = roomDAO.liberer(room);
-		roomView.confirmeLiberation(room, isOk);
+		//boolean isOk = roomDAO.liberer(room);
+		//roomView.confirmeLiberation(room, isOk);
 		roomView.display(index);
 	}
 

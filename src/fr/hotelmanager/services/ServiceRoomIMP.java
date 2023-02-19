@@ -9,12 +9,11 @@ import fr.hotelmanager.entities.Room;
 public class ServiceRoomIMP implements ServiceDAO<Room> {
 
 	//TODO: replace list by database table rooms
-	Random ran = new Random();
-	RoomDAO roomDAO;
+	RoomDAO roomDAO = new RoomDAO();
 
 	@Override
 	public Room save(Room newRoom) {
-		RoomDAO.rooms.add(newRoom);
+		//RoomDAO.rooms.add(newRoom);
 		return newRoom;
 	}
 	
@@ -32,8 +31,7 @@ public class ServiceRoomIMP implements ServiceDAO<Room> {
 	
 	@Override
 	public List<Room> findAll() {
-		List<Room> rooms = roomDAO.findAll();
-		return rooms;
+		return roomDAO.findAll();
 	}
 	
 	@Override

@@ -17,7 +17,7 @@ public class Room {
 		this.id = id;
 	}
 
-	public Room(int id, String name, boolean isFree, int nbrLits, int nbrPlaces) {
+	public Room(int id, String name, int nbrLits, int nbrPlaces, boolean isFree) {
 		this.id = id;
 		this.name = name;
 		this.isFree = isFree;

@@ -18,6 +18,7 @@ public class RoomView {
 		int	totalBusyRooms = 0;	
 		
 		for(Room room : list) {
+			System.out.println(room);
 			if(room.isFree()) {
 				totalFreeRooms++;
 			} else if(!room.isFree()) {
@@ -55,7 +56,7 @@ public class RoomView {
 			System.out.println("Aucune chambre correspond a cet ID.");
 			return;
 		}*/
-		System.out.println(RoomDAO.rooms.get(index));
+		//System.out.println(RoomDAO.rooms.get(index));
 	}
 	
 	public String identification() {

@@ -12,7 +12,7 @@ public final class DatabaseConnection {
     private DatabaseConnection() {
         String bdd = "hotel";
         try {
-            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/", "postgres", "afpa2020");
+            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/hotel", "postgres", "afpa2020");
             System.out.println("connexion etablie a la BDD " + bdd);
         } catch (SQLException e) {
             throw new RuntimeException(e);

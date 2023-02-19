@@ -55,10 +55,10 @@ public class HotelManager {
                 roomController.createRoom();
             }
 
-            if((choice.equalsIgnoreCase("F"))) {
+            /*if((choice.equalsIgnoreCase("F"))) {
                 System.out.println("\n\t Reserver une chambre");
                 roomController.reserverRoom();
-            }
+            }*/
 
             if((choice.equalsIgnoreCase("G"))) {
                 System.out.println("\n\t Liberer une chambre libre");
